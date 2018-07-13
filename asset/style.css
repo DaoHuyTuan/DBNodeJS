@@ -1,0 +1,14 @@
+@font-face {
+    font-family: marat;
+    src: url("./marat-sans-600-normal.woff");
+}
+.font {
+    font-family: marat;
+    color:black;
+    font-size: 70px;
+}
+.normal {
+    font-family: roboto;
+    color:black;
+    font-size: 70px;
+}
