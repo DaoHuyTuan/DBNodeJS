@@ -7,9 +7,9 @@ app.get("/",function(req,res) {
     res.sendFile(path.join(__dirname+'/index.html'));
 });
 
-// app.get("/submit",function(req,res){
-//     res.json(todos);
-// })
+app.get("/submit",function(req,res){
+    res.json(todos);
+})
 
 var hello = "hello";
 var todos =[{
@@ -29,18 +29,22 @@ var todos =[{
 
 // get 1 phần tử trong json 
 
-app.get('/submit/:id', function(req, res) {
+app.get('/submit/:id', function( req, res , next) {
 
 var idMuonQuery = parseInt(req.params.id);
+var result;
+    todos.forEach( function (moiGoiJson,index,array){
 
-    todos.forEach( function (moiGoiJson){
         if(idMuonQuery == moiGoiJson.id){
-            var result = moiGoiJson;
-            res.json(result);
-        }else {
-            res.status(404).send();
+            result = moiGoiJson;
         }
-    })
+    });
+    if(result) {
+        res.json(result);
+    }
+    else {
+        res.status(404).send();
+    }
 });
 
 //tạo 1 object mới trong json
